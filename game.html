@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // begin by getting the computer's choice of rock, paper or scissors
+        // then choose an item from rock, paper or scissors
+        // tell the rules of rock, paper, scissors
+
+        function getCompChoice(){
+            let choice = Math.floor(Math.random() * 10)
+
+            if (choice <= 3)
+                return "rock";
+            if (choice >= 4 && choice <= 6)
+                return "paper";
+            else
+                return "scissors";
+        }
+
+        
+
+        function PlayRound(choice1, choice2)
+             {
+                 if (choice1 === choice2){
+                     return "this was a draw";
+                 }
+
+                 if (choice1 === "rock" && choice2 === "scissors")
+                    return `${choice1} wins. rock beats scissors`;
+                
+                if (choice1 === "paper" && choice2 === "rock")
+                    return `${choice1} wins. paper beats rock`;
+                 
+                if (choice1 === "scissors" && choice2 === "paper")
+                    return `${choice1} wins. scissors beats paper`;
+                else
+                    return `${choice2} wins. ${choice2} beats ${choice1}`
+                  
+
+            
+        }
+        
+        compChoice = getCompChoice();
+        // console.log(compChoice);
+         plyrChoice = prompt("pick rock, paper, or scissors: ");
+        console.log(PlayRound(compChoice, plyrChoice));
+
+
+
+
+    </script>
+    
+</body>
+</html>
