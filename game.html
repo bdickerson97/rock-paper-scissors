@@ -7,10 +7,26 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div id="choice-container">
+        <button class="choice">Rock</button>
+        <button class="choice">Paper</button>
+        <button class="choice">Scissors</button>
+    </div>
+
+
+
+
+
+
     <script>
         // begin by getting the computer's choice of rock, paper or scissors
         // then choose an item from rock, paper or scissors
         // tell the rules of rock, paper, scissors
+
+
+        let compScore = 0;
+        let plyrScore = 0;
 
         function getCompChoice(){
             let choice = Math.floor(Math.random() * 10)
@@ -20,36 +36,66 @@
             if (choice >= 4 && choice <= 6)
                 return "paper";
             else
-                return "scissors";
+                return "sissors";
         }
 
-        
-
-        function PlayRound(choice1, choice2)
-             {
-                 if (choice1 === choice2){
-                     return "this was a draw";
-                 }
-
-                 if (choice1 === "rock" && choice2 === "scissors")
-                    return `${choice1} wins. rock beats scissors`;
+        function playRound(choice1, choice2){  
+            choice1 = choice1.toLowerCase();
+            choice2 = choice2.toLowerCase();     
                 
-                if (choice1 === "paper" && choice2 === "rock")
-                    return `${choice1} wins. paper beats rock`;
-                 
-                if (choice1 === "scissors" && choice2 === "paper")
-                    return `${choice1} wins. scissors beats paper`;
-                else
-                    return `${choice2} wins. ${choice2} beats ${choice1}`
+            if (choice1 === choice2){
+                    return "this was a draw";
+                }
+
+            if (choice1 === "rock" && choice2 === "scissors"){
+                return choice1;
+            }
+            
+            if (choice1 === "paper" && choice2 === "rock"){
+                return choice1;
+            }
+                
+            if (choice1 === "scissors" && choice2 === "paper"){
+                return choice1;
+            }
+            
+            else{
+                return choice2;
+            }
                   
 
             
         }
+
+        function playGame(e){
+            let plyrChoice = e.target.innerHTML.toLowerCase();
+            console.log(` you chose ${plyrChoice}`);
+            let compChoice = getCompChoice();
+            console.log(compChoice);
+            return playRound(plyrChoice, compChoice);
+            
+
+        }
+    
+
+            const choices = document.getElementById("choice-container")
+            
+            choices.addEventListener("click", (e) => console.log("the winner is: " + playGame(e)));
+
+
+                
+            
         
-        compChoice = getCompChoice();
-        // console.log(compChoice);
-         plyrChoice = prompt("pick rock, paper, or scissors: ");
-        console.log(PlayRound(compChoice, plyrChoice));
+            
+        
+
+              
+    
+         
+         
+
+        
+
 
 
 
