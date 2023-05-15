@@ -33,7 +33,7 @@
         // tell the rules of rock, paper, scissors
 
 
-    
+
 
         function getCompChoice(){
             let choice = Math.floor(Math.random() * 10)
@@ -46,9 +46,8 @@
                 return "scissors";
         }
 
-        function playRound(player_choice, computer_choice){  
-                
-                
+        function playRound(player_choice, computer_choice){
+
             if (player_choice === computer_choice){
                     return;
                 }
@@ -56,25 +55,39 @@
             if (player_choice === "rock" && computer_choice === "scissors"){
                 return player_choice;
             }
-            
+
             if (player_choice === "paper" && computer_choice === "rock"){
                 return player_choice;
             }
-                
+
             if (player_choice === "scissors" && computer_choice === "paper"){
                 return player_choice;
             }
-            
+
             else{
                 return computer_choice;
             }
-                  
 
-            
+
+
         }
 
         function updateScore(player){
+            let win_message = document.createElement("div")
+            document.body.appendChild(win_message)
+
             player.textContent =  parseInt(player.textContent) + 1
+
+            if (player_score.textContent === "5") {
+                win_message.textContent = "You won."
+                return;
+
+            }
+
+            if (computer_score.textContent === "5") {
+                win_message.textContent = "The computer has won."
+                return;
+            }
         }
 
         function playGame(e){
@@ -85,20 +98,23 @@
 
             if(round_winner === player_choice){updateScore(player_score)}
             if(round_winner === computer_choice){updateScore(computer_score)}
-            
+
+
+
 
         }
-    
+
 
         const choices = document.getElementById("choice-container")
+
         let player_score = document.querySelector(".player-score")
         let computer_score = document.querySelector(".computer-score")
-        
-        choices.addEventListener("click", (e) => playGame(e));
+
+        choices.addEventListener("click", playGame);
 
 
-                
+
     </script>
-    
+
 </body>
 </html>
