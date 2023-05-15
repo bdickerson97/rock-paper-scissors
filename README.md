@@ -1,2 +1,2 @@
-# tic-tac-toe
-tic-tac-toe: player vs console
+#   rock-paper-scissors
+rock-paper-scissors: player vs console
